@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+  <html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>News page</title>
+
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/myStyles.css" rel="stylesheet">
+<script src="http://codeorigin.jquery.com/jquery-2.0.3.min.js"></script>
+<script type="text/javascript">
+    var html = ""  // string to hold data before writing to page
+    //use any of the flickr api endpoints
+    var apiurl = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=zika&begin_date=20160101&sort=newest&api-key=c7198a8ed45c84aac2f2d2c55c9249cf%3A6%3A72829696"
+    $(document).ready(function(){
+            console.log("document ready")
+            $.getJSON(apiurl,function(json){ //in this case, the object is caled json, but it could be called anything
+
+                console.log(json);
+                //code for outside loop
+
+                $.each(json.response.docs, function(i, dataItem){ //dataItem is the current photo object were looking at (the current json item)
+                  console.log(dataItem);
+                  console.log(dataItem.lead_paragraph);
+                    //is the problem with dataItem variable?
+
+                  var web_url= dataItem.web_url;
+                  html += "<a href= 'web_url'><p>" + dataItem.headline.main + '</a>';
+                  html += '<br>' + dataItem.byline.original;
+
+                  html += '<br>' + dataItem.lead_paragraph + '</p>'; //display the photos and also link them to the flickr site
+                  //the target part opens a new tab
+
+
+                });
+                //after loop code
+                $("#results").append(html);
+            });
+
+
+    });
+
+</script>
+<!--<script src="instagram.js" type="text/javascript"></script>-->
+</head>
+<body>
+<div class="row">
+
+
+<div id="results" class="col-sm-6 col-xs-12"><h1>News</h1></div>
+
+
+<!--<div id="results2" class="col-sm-6 col-xs-12" ><h1>Instagram</h1></div>-->
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+</body>
+</html>
