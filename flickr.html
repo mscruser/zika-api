@@ -29,9 +29,16 @@
                   console.log(dataItem.author);
                   console.log(dataItem.title);
                   console.log(dataItem.media.m); //we went another level deeper into the tree
+                  if i <= 3{
+                    htmlPage1 += '<a href ="' + dataItem.link + '" target= "_blank"><img class = "photo" src="' + dataItem.media.m + '"></a>'; //display the photos and also link them to the flickr site
 
-                  html += '<a href ="' + dataItem.link + '" target= "_blank"><img class = "photo" src="' + dataItem.media.m + '"></a>'; //display the photos and also link them to the flickr site
-                  //the target part opens a new tab
+                  }
+
+                  if i >3 && <6{
+                    htmlPage1 += '<a href ="' + dataItem.link + '" target= "_blank"><img class = "photo" src="' + dataItem.media.m + '"></a>'; //display the photos and also link them to the flickr site
+                    
+                  }
+                //the target part opens a new tab
 
                 });
                 //after loop code

@@ -37,6 +37,8 @@ function zikaVirus(){
 document.getElementById("social-media").onclick= function() {createMedia()};
 document.getElementById("news").onclick= function() {createNews()};
 document.getElementById("images").onclick= function() {createImages()};
+document.getElementById("news").onclick= function() {createNews()};
+
 
 
 
@@ -59,7 +61,36 @@ $("#home").show();
 }
 
 function createNews(){
-document.getElementById("news-content").innerHTML = "IM BACK";
+  var html = ""  // string to hold data before writing to page
+  //use any of the flickr api endpoints
+  var apiurl = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=zika&begin_date=20160101&sort=newest&api-key=c7198a8ed45c84aac2f2d2c55c9249cf%3A6%3A72829696"
+  $(document).ready(function(){
+          console.log("document ready")
+          $.getJSON(apiurl,function(json){ //in this case, the object is caled json, but it could be called anything
+
+              console.log(json);
+              //code for outside loop
+
+              $.each(json.response.docs, function(i, dataItem){ //dataItem is the current photo object were looking at (the current json item)
+                console.log(dataItem);
+                console.log(dataItem.lead_paragraph);
+                  //is the problem with dataItem variable?
+
+                var web_url= dataItem.web_url;
+                html += "<a href= '" + dataItem.web_url + "'><p>" + dataItem.headline.main + '</a>';
+                html += '<br>' + dataItem.byline.original;
+
+                html += '<br>' + dataItem.lead_paragraph + '</p>'; //display the photos and also link them to the flickr site
+                //the target part opens a new tab
+
+
+              });
+              //after loop code
+              document.getElementById("news-content").innerHTML = html;
+          });
+
+
+  });
 $("#home-content").hide();
 $("#map-content").hide();
 $("#news-content").show();
@@ -68,9 +99,11 @@ $("#images-content").hide();
 $("#home").show();
 }
 
+
 function createImages(){
   var html = ""  // string to hold data before writing to page
   //use any of the flickr api endpoints
+var htmlPage1= ""
   var apiurl = "https://api.flickr.com/services/feeds/photos_public.gne?tags=zika&format=json&jsoncallback=?"
   $(document).ready(function(){
           console.log("document ready")
@@ -86,12 +119,27 @@ function createImages(){
                 console.log(dataItem.title);
                 console.log(dataItem.media.m); //we went another level deeper into the tree
 
-                html += '<a href ="' + dataItem.link + '" target= "_blank"><img class = "photo" src="' + dataItem.media.m + '"></a>'; //display the photos and also link them to the flickr site
+                if (i <= 3){
+                  html += '<a href ="' + dataItem.link + '" target= "_blank"><img class = "photo" src="' + dataItem.media.m + '"></a>'; //display the photos and also link them to the flickr site
+
+                }
+
+                if (i > 3 && i<8){
+                  console.log("its happening")
+                  htmlPage1 += '<a href ="' + dataItem.link + '" target= "_blank"><img class = "photo" src="' + dataItem.media.m + '"></a>'; //display the photos and also link them to the flickr site
+
+                }
+
+                //display the photos and also link them to the flickr site
                 //the target part opens a new tab
 
               });
               //after loop code
+              //THIS WONT WORK BECUASE THE BUTTON ISNT DONE UNTIL THE VERY END. IT NEEDS TO BE SEPARATE FROM THE HTML
+              html += "<button type='button' class='btn btn-primary' id='image-button'>Button</button>"
               document.getElementById("images-content").innerHTML = html;
+              console.log("button done");
+
           });
 
 
@@ -103,4 +151,5 @@ $("#news-content").hide();
 $("#social-content").hide();
 $("#images-content").show();
 $("#home").show();
+document.getElementById("image-button").onclick = document.getElementById("images-content").innerHTML= htmlPage1;
 }
