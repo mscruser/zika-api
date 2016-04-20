@@ -76,7 +76,7 @@
 
           <div class="mastfoot">
             <div class="inner">
-              <p>Semi-cool footer stuff</p>
+              <button type='button' class='btn btn-primary' id="image-button">Button</button>
             </div>
           </div>
 
@@ -115,29 +115,41 @@ $("#images-content").hide();
 $("#home").show();
 
 
-
+//put the map info in the footer
         var map;
-        var chapelHill = {lat: 35.913200, lng: -79.055847};
+        var centerofUS = {lat: 39.809860, lng: -98.555183};
           map = new google.maps.Map(document.getElementById('map-content'), {
-          center:chapelHill,
-          mapTypeId: google.maps.MapTypeId.SATELLITE,
-          zoom: 16
+          center:centerofUS,
+          //mapTypeId: google.maps.MapTypeId.SATELLITE,
+          zoom: 4
         });
 
-      var contentString = "This is Chapel Hill. It is the best place in the world.";
-        var infowindow = new google.maps.InfoWindow({
-    content: contentString
-  });
-  var marker = new google.maps.Marker({
-    position: chapelHill,
-    map: map,
-    title: 'Chapel Hill'
-  });
 
-  marker.addListener('click', function() {
-    infowindow.open(map, marker);
+
+
+  var latLongs =[{lat: 31.997347, lng: -102.077911}, {lat: 32.516261, lng: -114.521811}, {lat: 27.506748, lng: -99.502914}, {lat: 31.772543, lng: -106.460953},{lat: 35.376175, lng: -119.022102},
+    {lat:35.113281, lng: -106.621216}, {lat:32.253460, lng: -110.911789}, {lat:40.758701, lng:-111.876183}, {lat:36.746841, lng:-119.772591}, {lat:36.114647, lng:-115.172813}, {lat:38.575764, lng:-121.478851}]
+  var titles = ["Midland,TX", "Yuma, AZ", "Laredo, TX", "El Paso, TX", "Bakersfield, CA", "Albuquerque, NM", "Tucson, AZ", "Salt Lake City, UT", "Fresno, CA", "Las Vegas, NV", "Sacramento, CA"]
+
+    for (i = 0; i < latLongs.length; i++){
+
+      var win = new google.maps.InfoWindow({
+        content: titles[i]
+      });
+
+
+        var marker = new google.maps.Marker({
+        position: latLongs[i],
+        map: map,
+        title: titles[i]
+      });
+
+
+      marker.addListener('click', function() {
+        win.open(map, marker);
   });
       }
+    }
 
 
 

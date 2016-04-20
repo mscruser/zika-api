@@ -1,9 +1,9 @@
 
 
 
-var zikahtml = "<h1 class='cover-heading'>Zika Virus.</h1><p class='lead'>This disease is the latest to threaten to spread throughout the entire world. What is currently happening with the virus? </p><p class='lead'><a href='#' class='btn btn-lg btn-default'>Learn more</a></p>";
+var zikahtml = "<h1 class='cover-heading'>Zika Virus.</h1><p class='lead'>This disease is the latest to threaten to spread throughout the entire world. What is currently happening with the virus? </p><p class='lead'><a href='#' class='btn btn-lg btn-default' id='learn-more'>Learn more</a></p>";
 document.getElementById("home-content").innerHTML= zikahtml;
-
+document.getElementById("learn-more").onclick =function(){initMap()};
 $("#home-content").show();
 $("#map-content").hide();
 $("#news-content").hide();
@@ -12,8 +12,8 @@ $("#images-content").hide();
 $("#home").hide();
 
 
-
 document.getElementById("home").onclick= function() {zikaVirus()};
+
 
 function zikaVirus(){
 
@@ -49,7 +49,7 @@ document.getElementById("news").onclick= function() {createNews()};
 
 
 function createMedia(){
-document.getElementById("social-content").innerHTML = "<iframe allowtransparency='true' style='background: #FFFFFF;' src='http://meggiecruser.com/static/twitter' width='500' height ='500'></iframe>";
+document.getElementById("social-content").innerHTML = "<div class='iframe-container'><iframe allowtransparency='true' style='background: #FFFFFF;' src='http://meggiecruser.com/static/twitter' width='500' height ='500'></iframe></div>"; //#333 is the gray background color
 $("#home-content").hide();
 $("#map-content").hide();
 $("#news-content").hide();
@@ -99,11 +99,12 @@ $("#images-content").hide();
 $("#home").show();
 }
 
-
+var htmlPage1= ""
 function createImages(){
   var html = ""  // string to hold data before writing to page
   //use any of the flickr api endpoints
-var htmlPage1= ""
+
+var button=""
   var apiurl = "https://api.flickr.com/services/feeds/photos_public.gne?tags=zika&format=json&jsoncallback=?"
   $(document).ready(function(){
           console.log("document ready")
@@ -123,6 +124,7 @@ var htmlPage1= ""
                   html += '<a href ="' + dataItem.link + '" target= "_blank"><img class = "photo" src="' + dataItem.media.m + '"></a>'; //display the photos and also link them to the flickr site
 
                 }
+                document.getElementById("images-content").innerHTML = html;
 
                 if (i > 3 && i<8){
                   console.log("its happening")
@@ -130,14 +132,17 @@ var htmlPage1= ""
 
                 }
 
+
+
                 //display the photos and also link them to the flickr site
                 //the target part opens a new tab
 
               });
               //after loop code
               //THIS WONT WORK BECUASE THE BUTTON ISNT DONE UNTIL THE VERY END. IT NEEDS TO BE SEPARATE FROM THE HTML
-              html += "<button type='button' class='btn btn-primary' id='image-button'>Button</button>"
-              document.getElementById("images-content").innerHTML = html;
+
+
+
               console.log("button done");
 
           });
@@ -151,5 +156,7 @@ $("#news-content").hide();
 $("#social-content").hide();
 $("#images-content").show();
 $("#home").show();
-document.getElementById("image-button").onclick = document.getElementById("images-content").innerHTML= htmlPage1;
+
 }
+document.getElementById("image-button").onclick = document.getElementById("images-content").innerHTML= htmlPage1;
+console.log("button pressed");
