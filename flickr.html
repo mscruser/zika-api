@@ -29,15 +29,10 @@
                   console.log(dataItem.author);
                   console.log(dataItem.title);
                   console.log(dataItem.media.m); //we went another level deeper into the tree
-                  if i <= 3{
-                    htmlPage1 += '<a href ="' + dataItem.link + '" target= "_blank"><img class = "photo" src="' + dataItem.media.m + '"></a>'; //display the photos and also link them to the flickr site
 
-                  }
+                    html+= '<a href ="' + dataItem.link + '" target= "_blank"><img class = "photo" src="' + dataItem.media.m + '"></a>'; //display the photos and also link them to the flickr site
 
-                  if i >3 && <6{
-                    htmlPage1 += '<a href ="' + dataItem.link + '" target= "_blank"><img class = "photo" src="' + dataItem.media.m + '"></a>'; //display the photos and also link them to the flickr site
-                    
-                  }
+
                 //the target part opens a new tab
 
                 });
@@ -55,7 +50,7 @@
 <div class="row">
 
 
-<div id="results" class="col-sm-6 col-xs-12"><h1>Flickr</h1></div>
+<div id="results" class="col-sm-6 col-xs-12"></div>
 
 
 <!--<div id="results2" class="col-sm-6 col-xs-12" ><h1>Instagram</h1></div>-->

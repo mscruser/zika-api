@@ -1,0 +1,56 @@
+#home-text{
+background-color:#50473e;
+color:white;
+text-align:center;
+padding-top:15%;
+padding-bottom:24%;
+}
+
+.row.no-gutter {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.row.no-gutter [class*='col-']:not(:first-child),
+.row.no-gutter [class*='col-']:not(:last-child) {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+#zika-pic{
+  width: 100%;
+  height: 710px;
+}
+
+.button {
+    background-color: #409144;   /*4CAF50*/
+    border: none;
+    border-radius:5px;
+    color: white;
+    padding: 10px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+#lead-para{
+  padding-right:4%;
+  padding-left:4%;
+  
+}
+
+
+
+@media (max-width: 600px) {
+  #zika-pic{
+    width:100%;
+    height:100%;
+  }
+
+  #home-text{
+    padding-bottom:15%;
+  }
+}
