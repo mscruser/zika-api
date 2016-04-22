@@ -100,7 +100,7 @@
 var latLongs =[{lat: 31.997347, lng: -102.077911}, {lat: 32.516261, lng: -114.521811}, {lat: 27.506748, lng: -99.502914}, {lat: 31.772543, lng: -106.460953},{lat: 35.376175, lng: -119.022102},
   {lat:35.113281, lng: -106.621216}, {lat:32.253460, lng: -110.911789}, {lat:40.758701, lng:-111.876183}, {lat:36.746841, lng:-119.772591}, {lat:36.114647, lng:-115.172813}, {lat:38.575764, lng:-121.478851},
 {lat:29.424122, lng:-98.493629}, {lat:39.742043, lng:-104.991531}, {lat:32.918476, lng:-117.138237}, {lat:33.449184, lng:-112.077019}, {lat:32.161743	, lng:-86.113594}, {lat:34.738228	, lng:-86.601791},
-{lat:32.523659	, lng:-93.763504}, {lat:36.0626	, lng:94.1574}, {lat:32.298756	, lng:-90.184807}, {lat:33.420696, lng:-82.152374}]
+{lat:32.523659	, lng:-93.763504}, {lat:36.071561	, lng:-94.16654}, {lat:32.298756	, lng:-90.184807}, {lat:33.420696, lng:-82.152374}]
 var titles = ["Midland,TX", "Yuma, AZ", "Laredo, TX", "El Paso, TX", "Bakersfield, CA", "Albuquerque, NM", "Tucson, AZ", "Salt Lake City, UT", "Fresno, CA", "Las Vegas, NV", "Sacramento, CA", "San Antonio, TX", "Denver, CO", "San Diego, CA",
 "Phoenix, AZ", "Montgomery, AL", "Huntsville, AL", "Shreveport, LA","Fayetteville, AR", "Jackson, MS", "Augusta,GA" ]
 
@@ -140,34 +140,33 @@ console.log("function initMap2 called");
 
   });
 
+  var infowindow = new google.maps.InfoWindow();
+
+      var marker, i;
+
+  var latLongs =[{lat: 31.997347, lng: -102.077911}, {lat: 32.516261, lng: -114.521811}, {lat: 27.506748, lng: -99.502914}, {lat: 31.772543, lng: -106.460953},{lat: 35.376175, lng: -119.022102},
+  {lat:35.113281, lng: -106.621216}, {lat:32.253460, lng: -110.911789}, {lat:40.758701, lng:-111.876183}, {lat:36.746841, lng:-119.772591}, {lat:36.114647, lng:-115.172813}, {lat:38.575764, lng:-121.478851},
+  {lat:29.424122, lng:-98.493629}, {lat:39.742043, lng:-104.991531}, {lat:32.918476, lng:-117.138237}, {lat:33.449184, lng:-112.077019}, {lat:32.161743	, lng:-86.113594}, {lat:34.738228	, lng:-86.601791},
+  {lat:32.523659	, lng:-93.763504}, {lat:36.071561	, lng:-94.16654}, {lat:32.298756	, lng:-90.184807}, {lat:33.420696, lng:-82.152374}]
+  var titles = ["Midland,TX", "Yuma, AZ", "Laredo, TX", "El Paso, TX", "Bakersfield, CA", "Albuquerque, NM", "Tucson, AZ", "Salt Lake City, UT", "Fresno, CA", "Las Vegas, NV", "Sacramento, CA", "San Antonio, TX", "Denver, CO", "San Diego, CA",
+  "Phoenix, AZ", "Montgomery, AL", "Huntsville, AL", "Shreveport, LA","Fayetteville, AR", "Jackson, MS", "Augusta,GA" ]
 
 
+  for (i = 0; i < latLongs.length; i++) {
 
-var latLongs =[{lat: 31.997347, lng: -102.077911}, {lat: 32.516261, lng: -114.521811}, {lat: 27.506748, lng: -99.502914}, {lat: 31.772543, lng: -106.460953},{lat: 35.376175, lng: -119.022102},
-{lat:35.113281, lng: -106.621216}, {lat:32.253460, lng: -110.911789}, {lat:40.758701, lng:-111.876183}, {lat:36.746841, lng:-119.772591}, {lat:36.114647, lng:-115.172813}, {lat:38.575764, lng:-121.478851},
-{lat:29.424122, lng:-98.493629}, {lat:39.742043, lng:-104.991531}, {lat:32.918476, lng:-117.138237}, {lat:33.449184, lng:-112.077019}, {lat:32.161743	, lng:-86.113594}, {lat:34.738228	, lng:-86.601791},
-{lat:32.523659	, lng:-93.763504}, {lat:36.0626	, lng:94.1574}, {lat:32.298756	, lng:-90.184807}, {lat:33.420696, lng:-82.152374}]
-var titles = ["Midland,TX", "Yuma, AZ", "Laredo, TX", "El Paso, TX", "Bakersfield, CA", "Albuquerque, NM", "Tucson, AZ", "Salt Lake City, UT", "Fresno, CA", "Las Vegas, NV", "Sacramento, CA", "San Antonio, TX", "Denver, CO", "San Diego, CA",
-"Phoenix, AZ", "Montgomery, AL", "Huntsville, AL", "Shreveport, LA","Fayetteville, AR", "Jackson, MS", "Augusta,GA" ]
-
-for (i = 0; i < latLongs.length; i++){
-
-var win = new google.maps.InfoWindow({
-  content: titles[i]
-});
-
-
-  var marker = new google.maps.Marker({
-  position: latLongs[i],
+  marker = new google.maps.Marker({
+  position: new google.maps.LatLng(latLongs[i]),
   map: map,
-  title: titles[i]
-});
 
+  });
 
-marker.addListener('click', function() {
-  win.open(map, marker);
-});
-}
+  google.maps.event.addListener(marker, 'click', (function(marker, i) {
+  return function() {
+    infowindow.setContent(titles[i]);
+    infowindow.open(map, marker);
+  }
+  })(marker, i));
+  }
 }
 
 function switchText1(){
