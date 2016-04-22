@@ -44,7 +44,9 @@
   </div>
 
   <div class="row">
-      <div class="col-xs-12"><p id="map-text">this is the info for map 1 that I am putting in</p></div>
+      <div class="col-xs-12 background"><p id="map-text" style="color:white; text-align:center">The biggest problems with Zika are still in South America, but it poses a threat to the
+        United States too. While there are currently no reported cases of someone contracting Zika in the U.S., there are still "blank" travel-related Zika cases in cities throughout the United States.
+        The "" lists the top 50 cities in the U.S. most at risk for the virus, based on "" factors.</p></div>
     </div>
 
     <div class="row">
@@ -71,12 +73,9 @@
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCEfqCYSoZ03Vslf0VXWs77KiPJO5mvfWE&callback=initMap1"async defer></script>
     <script>
-//     $( document ).ready(function() {
-//     console.log( "ready!" );
-//     initMap();
-// });
 
 
+//to change the color of the maps: https://developers.google.com/maps/tutorials/customizing/styling-the-base-map#try_it_out
     function initMap1() {
       $("#map-content1").show();
       $("#map-content2").hide();
@@ -86,14 +85,17 @@
       var centerofUS = {lat: 39.809860, lng: -98.555183};
         map = new google.maps.Map(document.getElementById('map-content1'), {
         center:centerofUS,
-        //mapTypeId: google.maps.MapTypeId.SATELLITE,
+        //mapTypeId: google.maps.MapTypeId.TERRAIN,
+        scrollwheel: false,
         zoom: 4
 
 
       });
 
 
+      var infowindow = new google.maps.InfoWindow();
 
+          var marker, i;
 
 var latLongs =[{lat: 31.997347, lng: -102.077911}, {lat: 32.516261, lng: -114.521811}, {lat: 27.506748, lng: -99.502914}, {lat: 31.772543, lng: -106.460953},{lat: 35.376175, lng: -119.022102},
   {lat:35.113281, lng: -106.621216}, {lat:32.253460, lng: -110.911789}, {lat:40.758701, lng:-111.876183}, {lat:36.746841, lng:-119.772591}, {lat:36.114647, lng:-115.172813}, {lat:38.575764, lng:-121.478851},
@@ -102,24 +104,22 @@ var latLongs =[{lat: 31.997347, lng: -102.077911}, {lat: 32.516261, lng: -114.52
 var titles = ["Midland,TX", "Yuma, AZ", "Laredo, TX", "El Paso, TX", "Bakersfield, CA", "Albuquerque, NM", "Tucson, AZ", "Salt Lake City, UT", "Fresno, CA", "Las Vegas, NV", "Sacramento, CA", "San Antonio, TX", "Denver, CO", "San Diego, CA",
 "Phoenix, AZ", "Montgomery, AL", "Huntsville, AL", "Shreveport, LA","Fayetteville, AR", "Jackson, MS", "Augusta,GA" ]
 
-  for (i = 0; i < latLongs.length; i++){
 
-    var win = new google.maps.InfoWindow({
-      content: titles[i]
-    });
+for (i = 0; i < latLongs.length; i++) {
 
-
-      var marker = new google.maps.Marker({
-      position: latLongs[i],
+    marker = new google.maps.Marker({
+      position: new google.maps.LatLng(latLongs[i]),
       map: map,
-      title: titles[i]
+
     });
 
-
-    marker.addListener('click', function() {
-      win.open(map, marker);
-});
-    }
+    google.maps.event.addListener(marker, 'click', (function(marker, i) {
+      return function() {
+        infowindow.setContent(titles[i]);
+        infowindow.open(map, marker);
+      }
+    })(marker, i));
+  }
   }
 
 
@@ -130,11 +130,12 @@ console.log("function initMap2 called");
 
 
   var map;
-  var centerofUS = {lat: 39.809860, lng: -98.555183};
+  var centerofUS = {lat: 17.5707, lng:3.9962}; //center around quito: lat: -0.180653, lng:-78.467834}, zoom 3
     map = new google.maps.Map(document.getElementById("map-content2"), {
     center:centerofUS,
+    scrollwheel: false,
     //mapTypeId: google.maps.MapTypeId.SATELLITE,
-    zoom: 4
+    zoom: 2
 
 
   });
@@ -170,11 +171,11 @@ marker.addListener('click', function() {
 }
 
 function switchText1(){
-  document.getElementById("map-text").innerHTML= "this is the info for map 1 that I am putting in";
+  document.getElementById("map-text").innerHTML= "The biggest problems with Zika are still in South America, but it poses a threat to the United States too. While there are currently no reported cases of someone contracting Zika in the U.S., there are still asdfasdf travel-related Zika cases in cities throughout the United States. The asdfasdf lists the top 50 cities in the U.S. most at risk for the virus, based on asdfasdf factors.";
 }
 
 function switchText2(){
-document.getElementById("map-text").innerHTML= "this is the info for map 2 that I am putting in";
+document.getElementById("map-text").innerHTML= "The greatest number of Zika cases is in South America, but Zika has also spread throughout the world.";
 }
 
 document.getElementById("us-button").onclick = function() {initMap1(); switchText1()};
