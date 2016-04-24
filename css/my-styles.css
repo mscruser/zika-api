@@ -3,7 +3,7 @@ background-color:#50473e;
 color:white;
 text-align:center;
 padding-top:15%;
-padding-bottom:20%;
+padding-bottom:14.3%;
 }
 
 .row.no-gutter {
@@ -41,8 +41,8 @@ button:hover{
 }
 
 #lead-para{
-  padding-right:4%;
-  padding-left:4%;
+  padding-right:12%;
+  padding-left:12%;
 
 }
 
@@ -56,7 +56,7 @@ button:hover{
   color:white;
 }
 .head-background1{
-  background-color:#50473e;
+  background-color: #50473e; /*#50473e;*/
   padding-right:24%;
   padding-left:24%;
 }
@@ -91,14 +91,14 @@ button:hover{
     padding-bottom:15%;
   }
 
-  #map-content1{
+  /*#map-content1{
     width:90%;
     margin-left:5%;
   }
   #map-content2{
   width:90%;
   margin-left:5%;
-  }
+  }*/
 
   #home-text{
 
