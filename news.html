@@ -29,11 +29,10 @@
                     //is the problem with dataItem variable?
 
                   var web_url= dataItem.web_url;
-                  html += "<a href= '" + dataItem.web_url + "'><p>" + dataItem.headline.main + '</a>';
-                  html += '<br>' + dataItem.byline.original;
-
-                  html += '<br>' + dataItem.lead_paragraph + '</p>'; //display the photos and also link them to the flickr site
-                  //the target part opens a new tab
+                  html += '<a id ="news" href= "' + dataItem.web_url + '" target= "_blank">' + dataItem.headline.main + '</a>';
+                  html += '<br>' +  dataItem.byline.original;
+                  html += '<br>'  + "Published " + dataItem.pub_date;
+                  html += '<br>' +  dataItem.lead_paragraph + '</p>';
 
 
                 });

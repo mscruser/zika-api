@@ -26,6 +26,8 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/my-styles.css" rel="stylesheet">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script><!--geoCharts-->
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script> <!--geoCharts-->
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -35,16 +37,16 @@
   </head>
   <body>
     <div class="row">
-      <div class="col-xs-12" id="headline"><h1>Zika in the News</h1></div>
+      <div class="col-xs-12" id="headline" style="font-family:Verdana; color:#50473e; font-size:60px"><p>Zika in the News</p></div>
   </div>
 
     <div class="row">
-        <div class="col-xs-6 background" id="us-button" style="text-align:right"><button class="button">The U.S.</button></div>
-        <div class="col-xs-6 background" id="world-button"><button class="button">The World</button></div>
+        <div class="col-xs-6 " id="us-button" style="text-align:right"><button class="button">The U.S.</button></div>
+        <div class="col-xs-6 " id="world-button"><button class="button">The World</button></div>
   </div>
 
   <div class="row">
-      <div class="col-xs-12 background"><p id="map-text" style="color:white; text-align:center">The biggest problems with Zika are still in South America, but it poses a threat to the
+      <div class="col-xs-12"><p id="map-text" style="color:#50473e; text-align:center">The biggest problems with Zika are still in South America, but it poses a threat to the
         United States too. While there are currently no reported cases of someone contracting Zika in the U.S., there are still "blank" travel-related Zika cases in cities throughout the United States.
         The "" lists the top 50 cities in the U.S. most at risk for the virus, based on "" factors.</p></div>
     </div>
@@ -55,10 +57,16 @@
         <div id="map-content2"></div>
       </div>
     </div>
+    <!-- <div class="row">
+        <div class="col-xs-12 col-sm-4 background"><h1>Twitter</h1></div>
+          <div class="col-xs-12 col-sm-4 background"><h1>News</h1></div>
+            <div class="col-xs-12 col-sm-4 background"><h1>Images</h1></div>
+    </div> -->
+
     <div class="row">
-      <div class="col-xs-12 col-sm-4" id="twitter-content"><h1>Twitter</h1><iframe src='http://meggiecruser.com/static/twitter' height= '500'></iframe></div>
-      <div class="col-xs-12 col-sm-4" id="news-content"><h1>News</h1><iframe src='http://meggiecruser.com/static/news' height= '500'></iframe></div>
-      <div class="col-xs-12 col-sm-4" id="flickr-content"><h1>Images</h1><iframe src='http://meggiecruser.com/static/flickr' height= '500'></iframe></div>
+      <div class="col-xs-12 col-sm-4" id="twitter-content"><h1 id="frame" style="font-family:Verdana; color:#FFFFFF"><span class="head-background1">Twitter</span></h1><p id="frame">#zika tweets</p><iframe id="frame" src='http://meggiecruser.com/static/twitter' height= '500'></iframe></div>
+      <div class="col-xs-12 col-sm-4" id="news-content"><h1 id="frame" style="font-family:Verdana; color:#FFFFFF"><span class="head-background2">News</span></h1><p id="frame">Most recent news stories from The New York Times</p><iframe id="frame" src='http://meggiecruser.com/static/news' height= '500'></iframe></div>
+      <div class="col-xs-12 col-sm-4" id="flickr-content"><h1 id="frame"style="font-family:Verdana; color:#FFFFFF"><span class="head-background3">Images</span></h1><p id="frame">Most recent images from flickr tagged with "zika"</p><iframe id="frame" src='http://meggiecruser.com/static/flickr' height= '500'></iframe></div>
 
     </div>
 
@@ -122,6 +130,75 @@ for (i = 0; i < latLongs.length; i++) {
   }
   }
 
+// function initMap1(){
+//
+//   $("#map-content1").show();
+//     $("#map-content2").hide();
+//   google.charts.load('current', {'packages':['geochart']});
+//   google.charts.setOnLoadCallback(drawRegionsMap);
+//
+//   function drawRegionsMap() {
+//
+//     var data = google.visualization.arrayToDataTable([
+//       ['State', 'Cases'],
+//       ['Alabama', 2],
+//       ['Arizona', 1],
+//       ['Arkansas', 2],
+//       ['California', 29],
+//       ['Colorado', 2],
+//       ['Connecticut', 1],
+//       ['Delaware', 3],
+//       ['District of Columbia', 3],
+//       ['Florida', 84],
+//       ['Georgia', 13],
+//       ['Hawaii', 7],
+//       ['Illinois', 12],
+//       ['Indiana', 6],
+//       ['Iowa', 4],
+//       ['Kansas', 1],
+//       ['Kentucky', 3],
+//       ['Louisiana', 4],
+//       ['Maine', 2],
+//       ['Maryland', 8],
+//       ['Massachusetts', 7],
+//       ['Michigan', 3],
+//       ['Minnesota', 13],
+//       ['Mississippi', 3],
+//       ['Missouri', 3],
+//       ['Montana', 1],
+//       ['Nebraska', 2],
+//       ['Nevada', 2],
+//       ['New Hampshire', 2],
+//       ['New Jersey', 8],
+//       ['New Mexico', 1],
+//       ['New York', 60],
+//       ['North Carolina', 10],
+//       ['Ohio', 10],
+//       ['Oklahoma', 4],
+//       ['Oregon', 6],
+//       ['Pennsylvania', 15],
+//       ['Tennessee', 2],
+//       ['Texas', 30],
+//       ['Utah', 2],
+//       ['Virginia', 10],
+//       ['Washington', 2],
+//       ['West Virginia', 5]
+//
+//     ]);
+//
+//     var options = {
+//       region: 'US',
+//       colorAxis: {colors: ['#C5E3BF', '#409144']},
+//       //backgroundColor: '#50473e',
+//       resolution: 'provinces'
+//
+//     };
+//     var chart = new google.visualization.GeoChart(document.getElementById('map-content1'));
+//
+//     chart.draw(data, options);
+//   }
+// }
+
 
 function initMap2() {
 console.log("function initMap2 called");
@@ -129,7 +206,22 @@ console.log("function initMap2 called");
   $("#map-content2").show();
 
 
+
+
+
   var map;
+  var styles = [
+    {
+      featureType: "administrative.country",
+      elementType: "geometry.fill",
+      stylers: [
+        { color: '#409144' }
+
+      ]
+    }
+  ];
+
+
   var centerofUS = {lat: 17.5707, lng:3.9962}; //center around quito: lat: -0.180653, lng:-78.467834}, zoom 3
     map = new google.maps.Map(document.getElementById("map-content2"), {
     center:centerofUS,
@@ -138,7 +230,12 @@ console.log("function initMap2 called");
     zoom: 2
 
 
+
+
+
   });
+
+
 
   var infowindow = new google.maps.InfoWindow();
 

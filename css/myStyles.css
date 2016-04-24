@@ -8,6 +8,19 @@
   margin-top:20%;
 }
 
+#news{
+  color:#409144;
+
+}
+a:link{
+  text-decoration:none;
+}
+a:hover{
+  text-decoration:underline;
+}
+.white{
+  color:white;
+}
 .need-left{
   text-align:left
 }
@@ -28,4 +41,8 @@
 }
 .cover-heading{
   font-size:50px;
+}
+
+#headline-size{
+  font-size:20px;
 }
