@@ -71,6 +71,11 @@ button:hover{
   padding-left:12%;
 
 }
+#label{
+  font-family:'Open Sans';
+  color:#50473e;
+  font-size:12px;
+}
 
 #frame{
   margin-left:10%;

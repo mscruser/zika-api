@@ -49,8 +49,8 @@
   </div>
 
   <div class="row">
-      <div class="col-xs-12"><p id="map-text" style="color:#50473e; text-align:center;font-family:'Open Sans';font-size:15px;">According to the CDC, there are currently no "locally acquired" cases of Zika in the U.S., but there are still 388 travel-related Zika cases in cities throughout the United States.
-          Medical data company Health Grove listed the U.S. cities most at risk for Zika, based on recent Dengue and Chikungunya cases, Aedes aegypti mosquito levels, number of people arriving from Zika-infested areas, and population. The U.S. map below shows the cities Health Grove labeled most at risk.</p></div>
+      <div class="col-xs-12"><p id="map-text" style="color:#50473e; text-align:center;font-family:'Open Sans';font-size:15px;">According to the CDC, there are currently 388 travel-related Zika cases in cities throughout the United States.
+          Medical data company Health Grove listed the U.S. cities most at risk for Zika, based on recent Dengue and Chikungunya cases, Aedes aegypti mosquito levels, number of people arriving from Zika-infested areas, and population. The U.S. map below shows the 50 most at risk cities rated on a scale of 1 to 10, with 10 being the most at risk.</p></div>
     </div>
 
     <div class="row">
@@ -93,7 +93,7 @@
 
 
       var map;
-      var centerofUS = {lat: 39.809860, lng: -98.555183};
+      var centerofUS = {lat: 38, lng: -98.555183};
         map = new google.maps.Map(document.getElementById('map-content1'), {
         center:centerofUS,
         //mapTypeId: google.maps.MapTypeId.TERRAIN,
@@ -122,37 +122,119 @@ var titles = ["Midland,TX", "Yuma, AZ", "Laredo, TX", "El Paso, TX", "Bakersfiel
 "Louisville, KY","Oklahoma City, OK", "Memphis,TN", "Nashville, TN", "Kansas City, MO", "St Louis, MO", "Dallas, TX", "Charlotte, NC", "Washington, D.C.",
 "Philadelphia, PA", "Los Angeles, CA", "Savannah, GA", "Tallahassee, FL", "Mobile, AL", "Charleston, SC", "New Orleans, LA", "Atlanta, GA","Houston,TX", "Jacksonville,FL","New York, New York", "Brownsville, TX",
  "Tampa, FL", "Orlando, FL", "Miami, FL"]
-
+var scores=[1.38, 1.38,1.38,1.41,1.42, 1.42,1.42,1.43,1.93,1.99,2.00,2.03,2.2,2.4,2.89,3.92,3.94,3.95,3.97,4.0,4.0,4.24,4.36,4.93,
+  5.09,5.12,5.13,5.25,5.26,6.0,6.04, 6.13,7.11,7.38,7.86,7.86,7.93,7.99,7.99,8.0,8.0,8.01,8.13,8.14,8.38,8.49,8.86,9.14,9.43,
+10.0]
 
 for (i = 0; i < latLongs.length; i++) {
 
-
+//making them all green
   // var pinColor = "409144";
   // var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
   //     new google.maps.Size(21, 34),
   //     new google.maps.Point(0,0),
   //     new google.maps.Point(10, 34));
 
-    marker = new google.maps.Marker({
-      position: new google.maps.LatLng(latLongs[i]),
-      map: map,
+//normal pins
+    // marker = new google.maps.Marker({
+    //   position: new google.maps.LatLng(latLongs[i]),
+    //   map: map,
+    //
+    //   // icon: pinImage
+    //
+    // });
 
-      // icon: pinImage
+if (scores[i] <= 2){
 
-    });
+    var marker = new google.maps.Marker({
+    position: new google.maps.LatLng(latLongs[i]),
+    icon: {
+      path: google.maps.SymbolPath.CIRCLE,
+      fillColor: '#f75850',
+      fillOpacity: 0.9,
+      scale: 6,
+      strokeColor: '#000',
+      strokeWeight: 0
+    },
+    map: map
+  });
+}
+
+if (scores[i] > 2 && scores[i] <= 4){
+    var marker = new google.maps.Marker({
+    position: new google.maps.LatLng(latLongs[i]),
+    icon: {
+      path: google.maps.SymbolPath.CIRCLE,
+      fillColor: '#f75850',
+      fillOpacity: 0.9,
+      scale: 7,
+      strokeColor: '#000',
+      strokeWeight: 0
+    },
+    map: map
+  });
+}
+
+if (scores[i] > 4 && scores[i] <= 6){
+    var marker = new google.maps.Marker({
+    position: new google.maps.LatLng(latLongs[i]),
+    icon: {
+      path: google.maps.SymbolPath.CIRCLE,
+      fillColor: '#f75850',
+      fillOpacity: 0.9,
+      scale: 9,
+      strokeColor: '#000',
+      strokeWeight: 0
+    },
+    map: map
+  });
+}
+
+if (scores[i] > 6 && scores[i] <= 8){
+    var marker = new google.maps.Marker({
+    position: new google.maps.LatLng(latLongs[i]),
+    icon: {
+      path: google.maps.SymbolPath.CIRCLE,
+      fillColor: '#f75850',
+       fillOpacity: 0.9,
+      scale: 11,
+      strokeColor: '#000',
+      strokeWeight: 0
+    },
+    map: map
+  });
+}
+
+if (scores[i] > 8 && scores[i] <= 10){
+    var marker = new google.maps.Marker({
+    position: new google.maps.LatLng(latLongs[i]),
+    icon: {
+      path: google.maps.SymbolPath.CIRCLE,
+      fillColor: '#f75850',
+      fillOpacity: 0.9,
+      scale: 13,
+      strokeColor: '#000',
+      strokeWeight: 0
+    },
+    map: map
+  });
+}
+
 
 
 
 
     google.maps.event.addListener(marker, 'click', (function(marker, i) {
       return function() {
-        infowindow.setContent(titles[i]);
+        infowindow.setContent("<span id='label'>" + titles[i] + "</br>" + "Score: " + scores[i] + "</span>");
         infowindow.open(map, marker);
       }
     })(marker, i));
   }
   }
 
+
+//the google charts map
 // function initMap1(){
 //
 //   $("#map-content1").show();
@@ -280,15 +362,28 @@ console.log("function initMap2 called");
 
   for (i = 0; i < latLongs.length; i++) {
 
-  marker = new google.maps.Marker({
-  position: new google.maps.LatLng(latLongs[i]),
-  map: map,
+  // marker = new google.maps.Marker({
+  // position: new google.maps.LatLng(latLongs[i]),
+  // map: map,
+  //
+  // });
 
-  });
+  var marker = new google.maps.Marker({
+  position: new google.maps.LatLng(latLongs[i]),
+  icon: {
+    path: google.maps.SymbolPath.CIRCLE,
+    fillColor: '#f75850',
+    fillOpacity: 0.8,
+    scale: 8,
+    strokeColor: '#000',
+    strokeWeight: 0
+  },
+  map: map
+});
 
   google.maps.event.addListener(marker, 'click', (function(marker, i) {
   return function() {
-    infowindow.setContent(titles[i]);
+    infowindow.setContent("<span id='label'>" + titles[i] + "</span>");
     infowindow.open(map, marker);
   }
   })(marker, i));
@@ -296,7 +391,7 @@ console.log("function initMap2 called");
 }
 
 function switchText1(){
-  document.getElementById("map-text").innerHTML= "According to the CDC, there are currently no 'locally acquired' cases of Zika in the U.S., but there are still 388 travel-related Zika cases in cities throughout the United States. Medical data company Health Grove listed the U.S. cities most at risk for Zika, based on recent Dengue and Chikungunya cases, Aedes aegypti mosquito levels, number of people arriving from Zika-infested areas, and population. The U.S. map below shows the cities Health Grove labeled most at risk.";
+  document.getElementById("map-text").innerHTML= "According to the CDC, there are currently 388 travel-related Zika cases in cities throughout the United States. Medical data company Health Grove listed the U.S. cities most at risk for Zika, based on recent Dengue and Chikungunya cases, Aedes aegypti mosquito levels, number of people arriving from Zika-infested areas, and population. The U.S. map below shows the 50 most at risk cities rated on a scale of 1 to 10, with 10 being the most at risk.";
 }
 function switchText2(){
 document.getElementById("map-text").innerHTML= "The Zika virus exists locally in many Central and South American countries, as well as in Mexico and many islands of the Pacific Ocean. The map below pinpoints the countries where Zika can be contracted locally.";
