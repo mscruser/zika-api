@@ -1,3 +1,27 @@
+
+@import url(//fonts.googleapis.com/css?family=Open+Sans);
+
+@font-face {
+  font-family: Oswald;
+  src: url(oswald/Oswald-Light.ttf);
+}
+
+/*@font-face {
+  font-family: Open Sans;
+  src: url(open-sans/OpenSans-Regular.ttf);
+}*/
+
+@font-face {
+  font-family: Oswald Regular;
+  src: url(oswald/Oswald-Regular.ttf);
+}
+
+
+
+
+
+
+
 #home-text{
 background-color:#50473e;
 color:white;
@@ -117,5 +141,30 @@ button:hover{
     padding-right:5%;
     padding-left:5%;
   }
+
+  #frame{
+    margin-left: 10%;
+    margin-right:10%;
+  }
+
+  .head-background1{
+    /*background-color: #50473e; /*#50473e;*/*/
+    padding-right:24%;
+    padding-left:29%;
+    font-size:34px;
+  }
+  .head-background2{
+    /*background-color:#50473e;*/
+    padding-right:29%;
+    padding-left:32%;
+    font-size:34px;
+  }
+  .head-background3{
+    /*background-color:#50473e;*/
+    padding-right:24%;
+    padding-left:31%;
+    font-size:34px;
+  }
+
 
 }

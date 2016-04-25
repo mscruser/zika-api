@@ -20,12 +20,15 @@
         height:400px;
         width:100%;
       }
+
+
     </style>
 
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/my-styles.css" rel="stylesheet">
+
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script><!--geoCharts-->
     <script type="text/javascript" src="https://www.google.com/jsapi"></script> <!--geoCharts-->
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -46,9 +49,8 @@
   </div>
 
   <div class="row">
-      <div class="col-xs-12"><p id="map-text" style="color:#50473e; text-align:center;font-family:'Open Sans';font-size:15px;">The biggest problems with Zika are still in South America, but it poses a threat to the
-        United States too. While there are currently no reported cases of someone contracting Zika in the U.S., there are still "blank" travel-related Zika cases in cities throughout the United States.
-        The "" lists the top 50 cities in the U.S. most at risk for the virus, based on "" factors.</p></div>
+      <div class="col-xs-12"><p id="map-text" style="color:#50473e; text-align:center;font-family:'Open Sans';font-size:15px;">According to the CDC, there are currently no "locally acquired" cases of Zika in the U.S., but there are still 388 travel-related Zika cases in cities throughout the United States.
+          Medical data company Health Grove listed the U.S. cities most at risk for Zika, based on recent Dengue and Chikungunya cases, Aedes aegypti mosquito levels, number of people arriving from Zika-infested areas, and population. The U.S. map below shows the cities Health Grove labeled most at risk.</p></div>
     </div>
 
     <div class="row">
@@ -134,6 +136,7 @@ for (i = 0; i < latLongs.length; i++) {
     marker = new google.maps.Marker({
       position: new google.maps.LatLng(latLongs[i]),
       map: map,
+
       // icon: pinImage
 
     });
@@ -242,12 +245,12 @@ console.log("function initMap2 called");
   // ];
 
 
-  var centerofUS = {lat: 17.5707, lng:3.9962}; //center around quito: lat: -0.180653, lng:-78.467834}, zoom 3
+  var centerofUS = {lat:1.00000, lng:-110.5000}; //center around quito: lat: -0.180653, lng:-78.467834}, zoom 3
     map = new google.maps.Map(document.getElementById("map-content2"), {
     center:centerofUS,
     scrollwheel: false,
     //mapTypeId: google.maps.MapTypeId.SATELLITE,
-    zoom: 2
+    zoom: 3
 
 
 
@@ -293,11 +296,10 @@ console.log("function initMap2 called");
 }
 
 function switchText1(){
-  document.getElementById("map-text").innerHTML= "The biggest problems with Zika are still in South America, but it poses a threat to the United States too. While there are currently no reported cases of someone contracting Zika in the U.S., there are still asdfasdf travel-related Zika cases in cities throughout the United States. The asdfasdf lists the top 50 cities in the U.S. most at risk for the virus, based on asdfasdf factors.";
+  document.getElementById("map-text").innerHTML= "According to the CDC, there are currently no 'locally acquired' cases of Zika in the U.S., but there are still 388 travel-related Zika cases in cities throughout the United States. Medical data company Health Grove listed the U.S. cities most at risk for Zika, based on recent Dengue and Chikungunya cases, Aedes aegypti mosquito levels, number of people arriving from Zika-infested areas, and population. The U.S. map below shows the cities Health Grove labeled most at risk.";
 }
-
 function switchText2(){
-document.getElementById("map-text").innerHTML= "The greatest number of Zika cases is in South America, but Zika has also spread throughout the world.";
+document.getElementById("map-text").innerHTML= "The Zika virus exists locally in many Central and South American countries, as well as in Mexico and many islands of the Pacific Ocean. The map below pinpoints the countries where Zika can be contracted locally.";
 }
 
 document.getElementById("us-button").onclick = function() {initMap1(); switchText1()};

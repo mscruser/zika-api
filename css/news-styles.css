@@ -1,0 +1,38 @@
+
+@import url(//fonts.googleapis.com/css?family=Open+Sans);
+
+
+@font-face {
+  font-family: Oswald;
+  src: url(oswald/Oswald-Light.ttf);
+}
+
+/*@font-face {
+  font-family: Open Sans;
+  src: url(open-sans/OpenSans-Regular.ttf);
+}*/
+
+@font-face {
+  font-family: Oswald Regular;
+  src: url(oswald/Oswald-Regular.ttf);
+}
+
+#news{
+  color:#409144;
+  font-family: Oswald;
+  font-size:20px;
+
+}
+
+#open-font{
+  font-family:'Open Sans';
+  font-size:14px;
+  color:#50473e;
+  }
+
+  a:link{
+    text-decoration:none;
+  }
+  a:hover{
+    text-decoration:underline;
+  }
