@@ -125,16 +125,16 @@ var titles = ["Midland,TX", "Yuma, AZ", "Laredo, TX", "El Paso, TX", "Bakersfiel
 for (i = 0; i < latLongs.length; i++) {
 
 
-  var pinColor = "409144";
-  var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
-      new google.maps.Size(21, 34),
-      new google.maps.Point(0,0),
-      new google.maps.Point(10, 34));
+  // var pinColor = "409144";
+  // var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
+  //     new google.maps.Size(21, 34),
+  //     new google.maps.Point(0,0),
+  //     new google.maps.Point(10, 34));
 
     marker = new google.maps.Marker({
       position: new google.maps.LatLng(latLongs[i]),
       map: map,
-      icon: pinImage
+      // icon: pinImage
 
     });
 
@@ -230,16 +230,16 @@ console.log("function initMap2 called");
 
 
   var map;
-  var styles = [
-    {
-      featureType: "administrative.country",
-      elementType: "geometry.fill",
-      stylers: [
-        { color: '#409144' }
-
-      ]
-    }
-  ];
+  // var styles = [
+  //   {
+  //     featureType: "administrative.country",
+  //     elementType: "geometry.fill",
+  //     stylers: [
+  //       { color: '#409144' }
+  //
+  //     ]
+  //   }
+  // ];
 
 
   var centerofUS = {lat: 17.5707, lng:3.9962}; //center around quito: lat: -0.180653, lng:-78.467834}, zoom 3
@@ -261,12 +261,18 @@ console.log("function initMap2 called");
 
       var marker, i;
 
-  var latLongs =[{lat: 31.997347, lng: -102.077911}, {lat: 32.516261, lng: -114.521811}, {lat: 27.506748, lng: -99.502914}, {lat: 31.772543, lng: -106.460953},{lat: 35.376175, lng: -119.022102},
-  {lat:35.113281, lng: -106.621216}, {lat:32.253460, lng: -110.911789}, {lat:40.758701, lng:-111.876183}, {lat:36.746841, lng:-119.772591}, {lat:36.114647, lng:-115.172813}, {lat:38.575764, lng:-121.478851},
-  {lat:29.424122, lng:-98.493629}, {lat:39.742043, lng:-104.991531}, {lat:32.918476, lng:-117.138237}, {lat:33.449184, lng:-112.077019}, {lat:32.161743	, lng:-86.113594}, {lat:34.738228	, lng:-86.601791},
-  {lat:32.523659	, lng:-93.763504}, {lat:36.071561	, lng:-94.16654}, {lat:32.298756	, lng:-90.184807}, {lat:33.420696, lng:-82.152374}]
-  var titles = ["Midland,TX", "Yuma, AZ", "Laredo, TX", "El Paso, TX", "Bakersfield, CA", "Albuquerque, NM", "Tucson, AZ", "Salt Lake City, UT", "Fresno, CA", "Las Vegas, NV", "Sacramento, CA", "San Antonio, TX", "Denver, CO", "San Diego, CA",
-  "Phoenix, AZ", "Montgomery, AL", "Huntsville, AL", "Shreveport, LA","Fayetteville, AR", "Jackson, MS", "Augusta,GA" ]
+  var latLongs =[{lat:12.510052, lng: -70.009354}, {lat:13.193887, lng: -59.543198}, {lat:16.513889, lng: -88.366669}, {lat:-20.932983, lng: -66.219704}, {lat:12.2019, lng: -68.2624},
+  {lat:-22.121265, lng:-51.383400},{lat:4.624335, lng:-74.063644}, {lat:18.380102, lng:-65.961975},{lat:9.665231, lng:-82.782066},{lat:21.388828, lng:-77.915146},{lat:12.169570, lng:-68.990021},
+{lat:15.25, lng:-61.20},{lat:19.780769, lng:-70.687111},{lat:-0.208946, lng:-78.507751},{lat:13.905190, lng:-89.500206},{lat:3.9339, lng:-53.1258},{lat:16.2650, lng:-61.5510},
+{lat:14.628434, lng:-90.522713},{lat:6.559456, lng:-58.333191},{lat:19.934889, lng:-72.830872},
+{lat:13.536907, lng:-87.485161},{lat:18.405682, lng:-77.096733},{lat:14.469400, lng:-60.865799},{lat:19.432608, lng:-99.133209},{lat:12.136389, lng:-86.251389},{lat:8.983333, lng:-79.516670},
+{lat:-25.513475, lng:-54.615440},{lat:13.909444, lng:-60.978893},{lat:18.073099, lng:-63.082199},{lat:13.012296, lng:-61.227730},{lat:5.839398, lng:-55.199089},{lat:10.536421, lng:-61.311951},
+{lat:18.3358, lng:-64.8963},{lat:10.500000, lng:-66.916664},{lat:-14.2710, lng:-170.1322},{lat:-17.713371, lng:178.065033},{lat:5.3096, lng:162.9815},{lat:7.1315, lng:171.1845},
+{lat:-20.9043, lng:165.6180},{lat:-13.7590, lng:-172.1046},{lat:-21.178986, lng:-175.198242},{lat:16.5388, lng:-23.0418}]
+  var titles = ["Aruba","Barbados", "Belize", "Bolivia", "Bonaire", "Brazil", "Colombia", "Puerto Rico","Costa Rica","Cuba","Curacao", "Dominica", "Dominican Republic","Ecuador",
+ "El Salvador", "French Guiana", "Guadeloupe", "Guatemala","Guyana", "Haiti", "Honduras", "Jamaiaca","Martinique","Mexico", "Nicaragua", "Panama",
+"Paraguay", "Saint Lucia", "Saint Martin", "Saint Vincent and the Grenadines", "Suriname", "Trinidad and Tobago", "U.S. Virgin Islands","Venezuela", "American Samoa",
+"Fiji", "Kosrae, Federated States of Micronesia", "Marshall Islands", "New Caledonia","Samoa", "Tonga", "Cape Verde"]
 
 
   for (i = 0; i < latLongs.length; i++) {
