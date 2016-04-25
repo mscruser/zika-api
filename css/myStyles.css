@@ -10,6 +10,8 @@
 
 #news{
   color:#409144;
+  font-family: Oswald;
+  font-size:20px;
 
 }
 a:link{
@@ -31,6 +33,11 @@ a:hover{
     overflow: hidden;
 
 }
+
+#open-font{
+  font-family:'Open Sans';
+  font-size:14px;
+  }
 
 .iframe-container iframe {
     position: absolute;

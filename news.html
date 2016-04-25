@@ -30,9 +30,9 @@
 
                   var web_url= dataItem.web_url;
                   html += '<a id ="news" href= "' + dataItem.web_url + '" target= "_blank">' + dataItem.headline.main + '</a>';
-                  html += '<br>' +  dataItem.byline.original;
-                  html += '<br>'  + "Published " + dataItem.pub_date;
-                  html += '<br>' +  dataItem.lead_paragraph + '</p>';
+                  html += '<br>' + '<span id="open-font">' +  dataItem.byline.original + '</span>';
+                  html += '<br>'  + '<span id="open-font">' + "Published " + dataItem.pub_date + '</span>';
+                  html += '<br>' + '<span id="open-font">' +  dataItem.lead_paragraph + '</span>' + '</p>';
 
 
                 });

@@ -3,7 +3,7 @@ background-color:#50473e;
 color:white;
 text-align:center;
 padding-top:15%;
-padding-bottom:14.3%;
+padding-bottom:15.8%;
 }
 
 .row.no-gutter {
@@ -32,8 +32,10 @@ padding-bottom:14.3%;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+    margin: 0px 2px;
     cursor: pointer;
+    font-family: Oswald;
+
 }
 
 button:hover{
@@ -56,19 +58,22 @@ button:hover{
   color:white;
 }
 .head-background1{
-  background-color: #50473e; /*#50473e;*/
+  /*background-color: #50473e; /*#50473e;*/*/
   padding-right:24%;
   padding-left:24%;
+  font-size:30px;
 }
 .head-background2{
-  background-color:#50473e;
+  /*background-color:#50473e;*/
   padding-right:29%;
-  padding-left:29%
+  padding-left:29%;
+  font-size:30px;
 }
 .head-background3{
-  background-color:#50473e;
+  /*background-color:#50473e;*/
   padding-right:24%;
   padding-left:24%;
+  font-size:30px;
 }
 
 .background{
@@ -77,8 +82,8 @@ button:hover{
 
 #map-text{
   margin-top:1%;
-  padding-right:2%;
-  padding-left:2%;
+  padding-right:15%;
+  padding-left:15%;
 }
 
 @media (max-width: 600px) {
@@ -106,4 +111,11 @@ button:hover{
   padding-top:3%;
   padding-bottom:20%;
   }
+
+  #map-text{
+
+    padding-right:5%;
+    padding-left:5%;
+  }
+
 }
