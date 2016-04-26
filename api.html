@@ -24,7 +24,7 @@
 
     </style>
 
-
+    <!--Sources: http://www.theblaze.com/stories/2016/04/11/50-american-cities-most-at-risk-of-zika-virus/ http://www.cdc.gov/zika/geo/active-countries.html-->
     <!-- Bootstrap -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/my-styles.css" rel="stylesheet">
@@ -50,7 +50,7 @@
 
   <div class="row">
       <div class="col-xs-12"><p id="map-text" style="color:#50473e; text-align:center;font-family:'Open Sans';font-size:15px;">According to the CDC, there are currently 388 travel-related Zika cases in cities throughout the United States.
-          Medical data company Health Grove listed the U.S. cities most at risk for Zika, based on recent Dengue and Chikungunya cases, Aedes aegypti mosquito levels, number of people arriving from Zika-infested areas, and population. The U.S. map below shows the 50 most at risk cities rated on a scale of 1 to 10, with 10 being the most at risk.</p></div>
+          Medical data company Health Grove listed the U.S. cities most at risk for Zika, based on recent Dengue and Chikungunya cases, Aedes aegypti mosquito levels, number of people arriving from Zika-infested areas, and population. The U.S. map below shows the 50 most at-risk cities rated on a scale of 1 to 10, with 10 being the most at-risk.</p></div>
     </div>
 
     <div class="row">
@@ -68,7 +68,7 @@
     <div class="row">
       <div class="col-xs-12 col-sm-4" id="twitter-content"><h1 id="frame" style="font-family:'Oswald Regular'; color:#50473e"><span class="head-background1">TWITTER</span></h1><iframe id="frame" src='http://meggiecruser.com/static/twitter' height= '500'></iframe></div>
       <div class="col-xs-12 col-sm-4" id="news-content"><h1 id="frame" style="font-family:'Oswald Regular'; color:#50473e"><span class="head-background2">NEWS</span></h1><iframe id="frame" src='http://meggiecruser.com/static/news' height= '500'></iframe></div>
-      <div class="col-xs-12 col-sm-4" id="flickr-content"><h1 id="frame"style="font-family:'Oswald Regular'; color:#50473e"><span class="head-background3">IMAGES</span></h1><iframe id="frame" src='http://meggiecruser.com/static/flickr' height= '500'></iframe></div>
+      <div class="col-xs-12 col-sm-4" id="flickr-content"><h1 id="frame"style="font-family:'Oswald Regular'; color:#50473e"><span class="head-background3">IMAGES</span></h1><iframe id="frame" src='http://meggiecruser.com/static/flickr'height= '500'></iframe></div>
 
     </div>
   </br>
@@ -93,7 +93,9 @@
 
 
       var map;
-      var centerofUS = {lat: 38, lng: -98.555183};
+      var bounds = new google.maps.LatLngBounds();
+
+      var centerofUS = {lat: 40, lng: -98.555183};
         map = new google.maps.Map(document.getElementById('map-content1'), {
         center:centerofUS,
         //mapTypeId: google.maps.MapTypeId.TERRAIN,
@@ -143,7 +145,7 @@ for (i = 0; i < latLongs.length; i++) {
     //   // icon: pinImage
     //
     // });
-
+var myLatLng = new google.maps.LatLng(latLongs[i]);
 if (scores[i] <= 2){
 
     var marker = new google.maps.Marker({
@@ -158,7 +160,10 @@ if (scores[i] <= 2){
     },
     map: map
   });
+  bounds.extend(myLatLng);
+
 }
+
 
 if (scores[i] > 2 && scores[i] <= 4){
     var marker = new google.maps.Marker({
@@ -173,6 +178,8 @@ if (scores[i] > 2 && scores[i] <= 4){
     },
     map: map
   });
+  bounds.extend(myLatLng);
+
 }
 
 if (scores[i] > 4 && scores[i] <= 6){
@@ -188,6 +195,8 @@ if (scores[i] > 4 && scores[i] <= 6){
     },
     map: map
   });
+  bounds.extend(myLatLng);
+
 }
 
 if (scores[i] > 6 && scores[i] <= 8){
@@ -203,6 +212,7 @@ if (scores[i] > 6 && scores[i] <= 8){
     },
     map: map
   });
+  bounds.extend(myLatLng);
 }
 
 if (scores[i] > 8 && scores[i] <= 10){
@@ -218,10 +228,12 @@ if (scores[i] > 8 && scores[i] <= 10){
     },
     map: map
   });
+  bounds.extend(myLatLng);
+
 }
 
 
-
+map.fitBounds(bounds);
 
 
     google.maps.event.addListener(marker, 'click', (function(marker, i) {
@@ -326,7 +338,7 @@ console.log("function initMap2 called");
   //   }
   // ];
 
-
+var bounds = new google.maps.LatLngBounds();
   var centerofUS = {lat:1.00000, lng:-110.5000}; //center around quito: lat: -0.180653, lng:-78.467834}, zoom 3
     map = new google.maps.Map(document.getElementById("map-content2"), {
     center:centerofUS,
@@ -367,7 +379,7 @@ console.log("function initMap2 called");
   // map: map,
   //
   // });
-
+var myLatLng = new google.maps.LatLng(latLongs[i]);
   var marker = new google.maps.Marker({
   position: new google.maps.LatLng(latLongs[i]),
   icon: {
@@ -380,6 +392,9 @@ console.log("function initMap2 called");
   },
   map: map
 });
+bounds.extend(myLatLng);
+map.fitBounds(bounds);
+
 
   google.maps.event.addListener(marker, 'click', (function(marker, i) {
   return function() {
@@ -391,7 +406,7 @@ console.log("function initMap2 called");
 }
 
 function switchText1(){
-  document.getElementById("map-text").innerHTML= "According to the CDC, there are currently 388 travel-related Zika cases in cities throughout the United States. Medical data company Health Grove listed the U.S. cities most at risk for Zika, based on recent Dengue and Chikungunya cases, Aedes aegypti mosquito levels, number of people arriving from Zika-infested areas, and population. The U.S. map below shows the 50 most at risk cities rated on a scale of 1 to 10, with 10 being the most at risk.";
+  document.getElementById("map-text").innerHTML= "According to the CDC, there are currently 388 travel-related Zika cases in cities throughout the United States. Medical data company Health Grove listed the U.S. cities most at risk for Zika, based on recent Dengue and Chikungunya cases, Aedes aegypti mosquito levels, number of people arriving from Zika-infested areas, and population. The U.S. map below shows the 50 most at-risk cities rated on a scale of 1 to 10, with 10 being the most at-risk.";
 }
 function switchText2(){
 document.getElementById("map-text").innerHTML= "The Zika virus exists locally in many Central and South American countries, as well as in Mexico and many islands of the Pacific Ocean. The map below pinpoints the countries where Zika can be contracted locally.";
