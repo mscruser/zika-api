@@ -59,11 +59,7 @@
         <div id="map-content2"></div>
       </div>
     </div>
-    <!-- <div class="row">
-        <div class="col-xs-12 col-sm-4 background"><h1>Twitter</h1></div>
-          <div class="col-xs-12 col-sm-4 background"><h1>News</h1></div>
-            <div class="col-xs-12 col-sm-4 background"><h1>Images</h1></div>
-    </div> -->
+
 
     <div class="row">
       <div class="col-xs-12 col-sm-4" id="twitter-content"><h1 id="frame" style="font-family:'Oswald Regular'; color:#50473e"><span class="head-background1">TWITTER</span></h1><iframe id="frame" src='http://meggiecruser.com/static/twitter' height= '500'></iframe></div>
@@ -86,7 +82,7 @@
     <script>
 
 
-//to change the color of the maps: https://developers.google.com/maps/tutorials/customizing/styling-the-base-map#try_it_out
+
     function initMap1() {
       $("#map-content1").show();
       $("#map-content2").hide();
@@ -130,21 +126,7 @@ var scores=[1.38, 1.38,1.38,1.41,1.42, 1.42,1.42,1.43,1.93,1.99,2.00,2.03,2.2,2.
 
 for (i = 0; i < latLongs.length; i++) {
 
-//making them all green
-  // var pinColor = "409144";
-  // var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
-  //     new google.maps.Size(21, 34),
-  //     new google.maps.Point(0,0),
-  //     new google.maps.Point(10, 34));
 
-//normal pins
-    // marker = new google.maps.Marker({
-    //   position: new google.maps.LatLng(latLongs[i]),
-    //   map: map,
-    //
-    //   // icon: pinImage
-    //
-    // });
 var myLatLng = new google.maps.LatLng(latLongs[i]);
 if (scores[i] <= 2){
 
@@ -246,75 +228,7 @@ map.fitBounds(bounds);
   }
 
 
-//the google charts map
-// function initMap1(){
-//
-//   $("#map-content1").show();
-//     $("#map-content2").hide();
-//   google.charts.load('current', {'packages':['geochart']});
-//   google.charts.setOnLoadCallback(drawRegionsMap);
-//
-//   function drawRegionsMap() {
-//
-//     var data = google.visualization.arrayToDataTable([
-//       ['State', 'Cases'],
-//       ['Alabama', 2],
-//       ['Arizona', 1],
-//       ['Arkansas', 2],
-//       ['California', 29],
-//       ['Colorado', 2],
-//       ['Connecticut', 1],
-//       ['Delaware', 3],
-//       ['District of Columbia', 3],
-//       ['Florida', 84],
-//       ['Georgia', 13],
-//       ['Hawaii', 7],
-//       ['Illinois', 12],
-//       ['Indiana', 6],
-//       ['Iowa', 4],
-//       ['Kansas', 1],
-//       ['Kentucky', 3],
-//       ['Louisiana', 4],
-//       ['Maine', 2],
-//       ['Maryland', 8],
-//       ['Massachusetts', 7],
-//       ['Michigan', 3],
-//       ['Minnesota', 13],
-//       ['Mississippi', 3],
-//       ['Missouri', 3],
-//       ['Montana', 1],
-//       ['Nebraska', 2],
-//       ['Nevada', 2],
-//       ['New Hampshire', 2],
-//       ['New Jersey', 8],
-//       ['New Mexico', 1],
-//       ['New York', 60],
-//       ['North Carolina', 10],
-//       ['Ohio', 10],
-//       ['Oklahoma', 4],
-//       ['Oregon', 6],
-//       ['Pennsylvania', 15],
-//       ['Tennessee', 2],
-//       ['Texas', 30],
-//       ['Utah', 2],
-//       ['Virginia', 10],
-//       ['Washington', 2],
-//       ['West Virginia', 5]
-//
-//     ]);
-//
-//     var options = {
-//       region: 'US',
-//       colorAxis: {colors: ['#C5E3BF', '#409144']},
-//       backgroundColor: '#50473e',
-//       resolution: 'provinces'
-//
-//     };
-//     var chart = new google.visualization.GeoChart(document.getElementById('map-content1'));
-//
-//     chart.draw(data, options);
-//   }
-// }
+
 
 
 function initMap2() {
@@ -327,16 +241,7 @@ console.log("function initMap2 called");
 
 
   var map;
-  // var styles = [
-  //   {
-  //     featureType: "administrative.country",
-  //     elementType: "geometry.fill",
-  //     stylers: [
-  //       { color: '#409144' }
-  //
-  //     ]
-  //   }
-  // ];
+
 
 var bounds = new google.maps.LatLngBounds();
   var centerofUS = {lat:1.00000, lng:-110.5000}; //center around quito: lat: -0.180653, lng:-78.467834}, zoom 3
@@ -374,11 +279,7 @@ var bounds = new google.maps.LatLngBounds();
 
   for (i = 0; i < latLongs.length; i++) {
 
-  // marker = new google.maps.Marker({
-  // position: new google.maps.LatLng(latLongs[i]),
-  // map: map,
-  //
-  // });
+
 var myLatLng = new google.maps.LatLng(latLongs[i]);
   var marker = new google.maps.Marker({
   position: new google.maps.LatLng(latLongs[i]),
